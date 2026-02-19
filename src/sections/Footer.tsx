@@ -16,7 +16,7 @@ const Footer = () => {
 
   const socialLinks = [
     { href: 'https://facebook.com', label: 'Facebook', icon: Facebook },
-    { href: 'https://instagram.com', label: 'Instagram', icon: Instagram },
+    { href: 'https://www.instagram.com/closewithkhairi/', label: 'Instagram', icon: Instagram },
     { href: 'https://linkedin.com', label: 'LinkedIn', icon: Linkedin },
   ];
 

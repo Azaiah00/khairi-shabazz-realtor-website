@@ -12,6 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
+    // Reduce ScrollTrigger updates during scroll for smoother mobile (less "catching")
+    ScrollTrigger.config({ limitCallbacks: true });
+
     // Initialize GSAP defaults
     gsap.defaults({
       ease: 'power3.out',

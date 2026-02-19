@@ -4,6 +4,7 @@ const VirtualStagingSlider = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number; dragMode: boolean | null }>({ x: 0, y: 0, dragMode: null });
 
   const updateSliderPosition = (clientX: number) => {
     if (!containerRef.current) return;
@@ -13,51 +14,68 @@ const VirtualStagingSlider = () => {
     setSliderPosition(percentage);
   };
 
-  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
-    if ('touches' in e) {
-      updateSliderPosition(e.touches[0].clientX);
-    } else {
-      updateSliderPosition(e.clientX);
-    }
+    updateSliderPosition(e.clientX);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY, dragMode: null };
   };
 
   useEffect(() => {
-    if (!isDragging) return;
-
     const handleMouseMove = (e: MouseEvent) => {
-      updateSliderPosition(e.clientX);
+      if (isDragging) updateSliderPosition(e.clientX);
     };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches[0]) {
-        updateSliderPosition(e.touches[0].clientX);
-      }
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
+    const handleMouseUp = () => setIsDragging(false);
 
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleMouseUp);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleMouseUp);
     };
   }, [isDragging]);
+
+  useEffect(() => {
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!e.touches[0]) return;
+      const ref = touchStartRef.current;
+      const x = e.touches[0].clientX;
+      const y = e.touches[0].clientY;
+      const dx = Math.abs(x - ref.x);
+      const dy = Math.abs(y - ref.y);
+      if (ref.dragMode === null && (dx > 10 || dy > 10)) {
+        ref.dragMode = dx > dy;
+      }
+      if (ref.dragMode === true && containerRef.current) {
+        e.preventDefault();
+        updateSliderPosition(x);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      touchStartRef.current = { x: 0, y: 0, dragMode: null };
+    };
+
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[400px] md:h-[600px] cursor-col-resize select-none rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+      className="relative w-full h-[400px] md:h-[600px] cursor-col-resize select-none rounded-2xl overflow-hidden shadow-2xl border border-white/10 touch-pan-y"
       onMouseDown={handleMouseDown}
-      onTouchStart={handleMouseDown}
+      onTouchStart={handleTouchStart}
     >
       {/* After Image (Background) */}
       <div className="absolute inset-0">

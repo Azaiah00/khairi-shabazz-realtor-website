@@ -118,26 +118,26 @@ const Navigation = () => {
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <div ref={logoRef}>
-            <img
-              src="/logo.png"
-              alt="Khairi Shabazz"
-              className={`transition-all duration-300 group-hover:rotate-3 ${
-                isScrolled ? 'h-10' : 'h-12'
-              }`}
-            />
-            <div className="hidden sm:block">
-              <p className={`font-display font-semibold text-lg leading-tight transition-colors ${
-                isScrolled ? 'text-[var(--charcoal)]' : 'text-[var(--charcoal)]'
-              }`}>
-                KHAIRI SHABAZZ
-              </p>
-              <p className={`text-xs tracking-wider transition-colors ${
-                isScrolled ? 'text-[var(--teal)]' : 'text-[var(--teal)]'
-              }`}>
-                CLOSE WITH KHAIRI
-              </p>
-            </div>
+            <div ref={logoRef} className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt=""
+                className={`transition-all duration-300 group-hover:rotate-3 flex-shrink-0 ${
+                  isScrolled ? 'h-10' : 'h-12'
+                }`}
+              />
+              <div className="hidden sm:block">
+                <p className={`font-display font-semibold text-lg leading-tight transition-colors ${
+                  isScrolled ? 'text-[var(--charcoal)]' : 'text-[var(--charcoal)]'
+                }`}>
+                  KHAIRI SHABAZZ
+                </p>
+                <p className={`text-xs tracking-wider transition-colors ${
+                  isScrolled ? 'text-[var(--teal)]' : 'text-[var(--teal)]'
+                }`}>
+                  CLOSE WITH KHAIRI
+                </p>
+              </div>
             </div>
           </Link>
 

@@ -55,6 +55,15 @@
   
   html {
     scroll-behavior: smooth;
+    /* Let browser handle vertical scroll without delay on touch (reduces "stuck" feeling) */
+    touch-action: pan-y;
+  }
+
+  /* On touch devices use instant scroll so it doesn't feel like it's catching */
+  @media (hover: none) and (pointer: coarse) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   
   body {
