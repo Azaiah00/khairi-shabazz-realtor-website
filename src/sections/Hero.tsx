@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Star, Home, Phone } from 'lucide-react';
+import { isTouchDevice } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,52 +82,53 @@ const Hero = () => {
         1.7
       );
 
-      // Scroll-triggered parallax effects
+      // Scroll-triggered parallax (disabled on touch for smoother mobile scroll)
       const scrollTriggers: ScrollTrigger[] = [];
-
-      scrollTriggers.push(
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            if (headlineRef.current) {
-              gsap.set(headlineRef.current, {
-                y: -80 * progress,
-                opacity: 1 - progress * 0.7,
-              });
-            }
-            if (subheadlineRef.current) {
-              gsap.set(subheadlineRef.current, {
-                y: -120 * progress,
-                opacity: 1 - progress,
-              });
-            }
-            if (imageRef.current) {
-              gsap.set(imageRef.current, {
-                scale: 1 + 0.15 * progress,
-                y: -50 * progress,
-              });
-            }
-            if (decorRef1.current) {
-              gsap.set(decorRef1.current, {
-                x: -100 * progress,
-                y: -50 * progress,
-                rotation: 180 * progress,
-              });
-            }
-            if (decorRef2.current) {
-              gsap.set(decorRef2.current, {
-                x: 100 * progress,
-                y: 50 * progress,
-                rotation: -180 * progress,
-              });
-            }
-          },
-        })
-      );
+      if (!isTouchDevice()) {
+        scrollTriggers.push(
+          ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              if (headlineRef.current) {
+                gsap.set(headlineRef.current, {
+                  y: -80 * progress,
+                  opacity: 1 - progress * 0.7,
+                });
+              }
+              if (subheadlineRef.current) {
+                gsap.set(subheadlineRef.current, {
+                  y: -120 * progress,
+                  opacity: 1 - progress,
+                });
+              }
+              if (imageRef.current) {
+                gsap.set(imageRef.current, {
+                  scale: 1 + 0.15 * progress,
+                  y: -50 * progress,
+                });
+              }
+              if (decorRef1.current) {
+                gsap.set(decorRef1.current, {
+                  x: -100 * progress,
+                  y: -50 * progress,
+                  rotation: 180 * progress,
+                });
+              }
+              if (decorRef2.current) {
+                gsap.set(decorRef2.current, {
+                  x: 100 * progress,
+                  y: 50 * progress,
+                  rotation: -180 * progress,
+                });
+              }
+            },
+          })
+        );
+      }
 
       return () => {
         scrollTriggers.forEach((st) => st.kill());

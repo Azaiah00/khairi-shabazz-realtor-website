@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Quote, CheckCircle } from 'lucide-react';
+import { isTouchDevice } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,23 +124,25 @@ const Testimonials = () => {
         })
       );
 
-      // Quote mark parallax
-      scrollTriggers.push(
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-          onUpdate: (self) => {
-            if (quoteMarkRef.current) {
-              gsap.set(quoteMarkRef.current, {
-                rotation: 15 * self.progress,
-                x: 20 * self.progress,
-              });
-            }
-          },
-        })
-      );
+      // Quote mark parallax (disabled on touch for smoother mobile scroll)
+      if (!isTouchDevice()) {
+        scrollTriggers.push(
+          ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+            onUpdate: (self) => {
+              if (quoteMarkRef.current) {
+                gsap.set(quoteMarkRef.current, {
+                  rotation: 15 * self.progress,
+                  x: 20 * self.progress,
+                });
+              }
+            },
+          })
+        );
+      }
 
       return () => {
         scrollTriggers.forEach((st) => st.kill());

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Award, MapPin, Shield, ArrowRight, CheckCircle } from 'lucide-react';
+import { isTouchDevice } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -148,21 +149,23 @@ const About = () => {
         })
       );
 
-      // Parallax effect
-      scrollTriggers.push(
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            if (imageRef.current) {
-              gsap.set(imageRef.current, { y: 50 - 100 * progress });
-            }
-          },
-        })
-      );
+      // Parallax effect (disabled on touch for smoother mobile scroll)
+      if (!isTouchDevice()) {
+        scrollTriggers.push(
+          ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              if (imageRef.current) {
+                gsap.set(imageRef.current, { y: 50 - 100 * progress });
+              }
+            },
+          })
+        );
+      }
 
       return () => {
         scrollTriggers.forEach((st) => st.kill());

@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Phone, Mail, MapPin, Send, CheckCircle, ArrowRight, Building2, Shield } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { isTouchDevice } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,24 +111,26 @@ const Contact = () => {
         })
       );
 
-      // Parallax
-      scrollTriggers.push(
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            if (infoRef.current) {
-              gsap.set(infoRef.current, { y: 20 - 40 * progress });
-            }
-            if (formRef.current) {
-              gsap.set(formRef.current, { y: -15 + 30 * progress });
-            }
-          },
-        })
-      );
+      // Parallax (disabled on touch for smoother mobile scroll)
+      if (!isTouchDevice()) {
+        scrollTriggers.push(
+          ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              if (infoRef.current) {
+                gsap.set(infoRef.current, { y: 20 - 40 * progress });
+              }
+              if (formRef.current) {
+                gsap.set(formRef.current, { y: -15 + 30 * progress });
+              }
+            },
+          })
+        );
+      }
 
       return () => {
         scrollTriggers.forEach((st) => st.kill());
