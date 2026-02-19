@@ -62,7 +62,7 @@ const VirtualStagingSlider = () => {
       {/* After Image (Background) */}
       <div className="absolute inset-0">
         <img
-          src="/virtual-staging-after.png"
+          src="/virtual-staging-after.PNG"
           alt="After Virtual Staging"
           className="w-full h-full object-cover"
         />

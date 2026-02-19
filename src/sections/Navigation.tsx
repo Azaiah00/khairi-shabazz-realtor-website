@@ -101,13 +101,6 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <nav
       ref={navRef}
@@ -121,11 +114,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
-            ref={logoRef}
             to="/"
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <div ref={logoRef}>
             <img
               src="/logo.png"
               alt="Khairi Shabazz"
@@ -144,6 +137,7 @@ const Navigation = () => {
               }`}>
                 CLOSE WITH KHAIRI
               </p>
+            </div>
             </div>
           </Link>
 

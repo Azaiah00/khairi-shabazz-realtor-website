@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Download, Printer, Info, ChevronDown, Copy } from 'lucide-react';
+import { Download, Copy } from 'lucide-react';
 import jsPDF from 'jspdf';
 import { RICHMOND_LOCALITIES, DEFAULT_MORTGAGE_RATES } from '../data/richmondVaRates';
 
@@ -108,6 +108,7 @@ const BuyerCalculators = () => {
   const formatCurrency = (val: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(val);
 
   const downloadPDF = () => {
+    if (!closingBreakdown) return;
     const doc = new jsPDF();
     const teal = [74, 155, 155];
     doc.setFontSize(20);
@@ -122,7 +123,7 @@ const BuyerCalculators = () => {
     doc.text(`Home Price: ${formatCurrency(parseFloat(closingData.homePrice.replace(/,/g, '')))}`, 20, y); y += 10;
     doc.text(`Monthly P&I Payment: ${formatCurrency(monthlyPayment)}`, 20, y); y += 10;
     doc.text(`Estimated Closing Costs: ${formatCurrency(closingBreakdown.totalCosts)}`, 20, y); y += 10;
-    doc.setFont(undefined, 'bold');
+    doc.setFont('helvetica', 'bold');
     doc.text(`Total Cash Needed: ${formatCurrency(closingBreakdown.totalCash)}`, 20, y);
     
     doc.save(`Khairi-Shabazz-Buyer-Estimate.pdf`);

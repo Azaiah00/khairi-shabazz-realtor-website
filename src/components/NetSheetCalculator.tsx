@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Download, Printer, Info } from 'lucide-react';
+import { Download, Printer } from 'lucide-react';
 import jsPDF from 'jspdf';
 import { RICHMOND_LOCALITIES, TITLE_COMPANY_FEES_RICHMOND, getTransferAndRecordingTaxes } from '../data/richmondVaRates';
 
@@ -141,7 +141,7 @@ const NetSheetCalculator = () => {
     let yPos = 55;
     
     const addRow = (label: string, value: string, isBold = false) => {
-      doc.setFont(undefined, isBold ? 'bold' : 'normal');
+      doc.setFont('helvetica', isBold ? 'bold' : 'normal');
       doc.text(label, 20, yPos);
       doc.text(value, 150, yPos, { align: 'right' });
       yPos += 10;
@@ -166,7 +166,7 @@ const NetSheetCalculator = () => {
     
     yPos += 10;
     doc.setFontSize(16);
-    doc.setFont(undefined, 'bold');
+    doc.setFont('helvetica', 'bold');
     doc.text('Estimated Net Proceeds:', 20, yPos);
     doc.setFontSize(18);
     doc.setTextColor(teal[0], teal[1], teal[2]);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Download, Printer, Info, Utensils, Droplets, Paintbrush, Square, Building2, RectangleHorizontal, Box, Leaf, Layers, Home, Wind, Wrench, CheckCircle, XCircle } from 'lucide-react';
+import { Download, Printer, Utensils, Droplets, Paintbrush, Square, Building2, Leaf, Wrench, CheckCircle, XCircle } from 'lucide-react';
 import jsPDF from 'jspdf';
 
 const improvementROIs: Record<string, any> = {
@@ -95,7 +95,7 @@ const ROICalculator = () => {
     doc.text(`Expected ROI: ${results.expectedROI}%`, 20, y); y += 10;
     doc.text(`Estimated Value Increase: ${formatCurrency(results.valueIncrease)}`, 20, y); y += 15;
     
-    doc.setFont(undefined, 'bold');
+    doc.setFont('helvetica', 'bold');
     doc.text(`Net Gain/Loss: ${formatCurrency(results.netGain)}`, 20, y);
     
     doc.save(`Khairi-Shabazz-ROI-${new Date().toISOString().split('T')[0]}.pdf`);

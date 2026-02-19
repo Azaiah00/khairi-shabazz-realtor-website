@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Camera, Layout, CheckCircle, DollarSign, TrendingUp, BarChart3, Clock, MessageCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import VirtualStagingSlider from '../components/VirtualStagingSlider';
 import NetSheetCalculator from '../components/NetSheetCalculator';
-import ROICalculator from '../components/ROICalculator';
 import SmartSellTimeline from '../components/SmartSellTimeline';
 
 const SellerConsultation = () => {
@@ -119,12 +117,9 @@ const SellerConsultation = () => {
 
       {/* Calculators */}
       <section id="calculator" className="py-24 px-6 bg-[var(--off-white)]">
-        <div className="max-w-7xl mx-auto space-y-24">
+        <div className="max-w-7xl mx-auto">
           <div className="reveal">
             <NetSheetCalculator />
-          </div>
-          <div className="reveal">
-            <ROICalculator />
           </div>
         </div>
       </section>
@@ -139,7 +134,7 @@ const SellerConsultation = () => {
           <div className="space-y-4 reveal">
             {[
               { q: 'How long does it take to sell a home in Richmond?', a: 'Typically 21-45 days from listing to closing, depending on the neighborhood and pricing strategy.' },
-              { q: 'What repairs should I make before listing?', a: 'Focus on high-ROI items like interior paint, landscaping, and minor flooring repairs. Use our ROI calculator above for specifics.' },
+              { q: 'What repairs should I make before listing?', a: 'Focus on high-ROI items like interior paint, landscaping, and minor flooring repairs. Khairi can walk you through which improvements make the most sense for your home.' },
               { q: 'Is virtual staging really effective?', a: 'Yes! Most buyers start their search online. High-quality staged photos are the #1 factor in getting buyers through your front door.' }
             ].map((faq, i) => (
               <div key={i} className="p-6 rounded-2xl border border-gray-100 bg-[var(--off-white)]">

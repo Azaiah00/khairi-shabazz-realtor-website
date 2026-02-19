@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BookOpen, FileText, MapPin, Calculator, Search, Home, ArrowRight, Download } from 'lucide-react';
+import { BookOpen, FileText, MapPin, Calculator, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Resources = () => {
@@ -48,7 +47,6 @@ const Resources = () => {
   const tools = [
     { title: "Net Sheet Calculator", desc: "Estimate your proceeds after all selling costs.", icon: Calculator, link: "/seller-consultation#calculator" },
     { title: "Mortgage Calculator", desc: "Calculate your monthly P&I payments.", icon: Calculator, link: "/buyer-consultation#calculators" },
-    { title: "ROI Calculator", desc: "See which improvements add the most value.", icon: Home, link: "/seller-consultation#calculator" },
   ];
 
   return (

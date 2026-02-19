@@ -1,8 +1,8 @@
-import { ReactNode, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../sections/Navigation';
 import Footer from '../sections/Footer';
-import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 interface LayoutProps {

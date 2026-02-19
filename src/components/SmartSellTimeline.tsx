@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Download, Printer, Calendar, Clock, Target, CheckCircle, PartyPopper, Eye, FileText, Users, Home, Camera, Sparkles, Hammer, Rocket, Trash2, BarChart3 } from 'lucide-react';
+import { Download, Printer, Target, CheckCircle, PartyPopper, Eye, FileText, Users, Home, Camera, Sparkles, Hammer, Rocket, Trash2, BarChart3 } from 'lucide-react';
 import jsPDF from 'jspdf';
 
 const timelineSteps = [
@@ -59,10 +59,10 @@ const SmartSellTimeline = () => {
     let y = 50;
     calculatedTimeline.forEach((step, i) => {
       if (y > 270) { doc.addPage(); y = 20; }
-      doc.setFont(undefined, 'bold');
+      doc.setFont('helvetica', 'bold');
       doc.setTextColor(0, 0, 0);
       doc.text(`${i + 1}. ${step.name}`, 20, y);
-      doc.setFont(undefined, 'normal');
+      doc.setFont('helvetica', 'normal');
       doc.text(step.formatted, 150, y, { align: 'right' });
       y += 7;
       doc.setFontSize(10);

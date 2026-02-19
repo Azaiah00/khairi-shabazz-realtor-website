@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CheckCircle, DollarSign, Home, Search, Target, TrendingUp, ShieldCheck, MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
+import { DollarSign, Home, Search, Target, TrendingUp, ShieldCheck, ArrowRight } from 'lucide-react';
 import BuyerCalculators from '../components/BuyerCalculators';
 
 const BuyerConsultation = () => {
