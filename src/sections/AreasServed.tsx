@@ -197,7 +197,7 @@ const AreasServed = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--teal)]/80 via-[var(--teal)]/70 to-[var(--teal)]/80" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div ref={headerRef} className="text-center mb-16">
           <span className="section-label text-white opacity-0">Areas Served</span>

@@ -55,11 +55,13 @@
   
   html {
     scroll-behavior: smooth;
-    /* Let browser handle vertical scroll without delay on touch (reduces "stuck" feeling) */
     touch-action: pan-y;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
-  /* On touch devices use instant scroll so it doesn't feel like it's catching */
   @media (hover: none) and (pointer: coarse) {
     html {
       scroll-behavior: auto;
@@ -69,11 +71,30 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+    /* Mobile: use dynamic viewport height so address bar doesn't break layout */
+    min-height: 100vh;
+    min-height: 100dvh;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-weight: 500;
+  }
+
+  #root {
+    overflow-x: hidden;
+    max-width: 100vw;
+    min-height: 100%;
+  }
+
+  /* Safe-area insets for fixed nav on notched devices (e.g. iPhone) */
+  .safe-area-nav {
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+    padding-top: env(safe-area-inset-top, 0);
   }
 }
 
@@ -369,4 +390,10 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--teal-dark);
+}
+
+/* Scroll-to-top button: avoid notch/home indicator on mobile */
+.safe-area-fixed-bottom-right {
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
 }

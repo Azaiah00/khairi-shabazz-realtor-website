@@ -50,7 +50,7 @@ const Resources = () => {
   ];
 
   return (
-    <div ref={containerRef} className="bg-[var(--off-white)] pt-32 pb-24 px-6">
+    <div ref={containerRef} className="bg-[var(--off-white)] pt-28 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 reveal">
           <div className="section-label mb-4">Resources & Tools</div>

@@ -196,10 +196,10 @@ const About = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Image */}
-          <div className="relative order-2 lg:order-1">
+          <div className="relative order-2 lg:order-1 min-w-0">
             <div
               ref={imageRef}
               className="relative rounded-2xl overflow-hidden shadow-xl"

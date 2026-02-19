@@ -41,7 +41,7 @@ const BuyerConsultation = () => {
   return (
     <div ref={containerRef} className="bg-[var(--off-white)]">
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-[var(--teal)] text-white overflow-hidden relative">
+      <section className="pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-[var(--teal)] text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <div className="inline-block px-4 py-1 rounded-full bg-white/20 border border-white/30 text-white text-sm font-semibold tracking-widest uppercase mb-6 reveal">
             Buyer Consultation
@@ -64,7 +64,7 @@ const BuyerConsultation = () => {
       </section>
 
       {/* Game Plan */}
-      <section id="process" className="py-24 px-6 bg-white">
+      <section id="process" className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 reveal">
             <div className="section-label mb-4">The Strategy</div>
@@ -92,7 +92,7 @@ const BuyerConsultation = () => {
       </section>
 
       {/* Calculators */}
-      <section id="calculators" className="py-24 px-6 bg-[var(--off-white)]">
+      <section id="calculators" className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--off-white)]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 reveal">
             <div className="section-label mb-4">Financials</div>
@@ -107,8 +107,8 @@ const BuyerConsultation = () => {
       </section>
 
       {/* Wealth Building */}
-      <section className="py-24 px-6 bg-[var(--charcoal)] text-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+<section className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--charcoal)] text-white">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="reveal">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
               Real Estate is <span className="text-[var(--teal)]">Wealth Building</span>
@@ -144,7 +144,7 @@ const BuyerConsultation = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 reveal">
             <h2 className="text-4xl font-display font-bold text-[var(--charcoal)] mb-4">Buyer FAQ</h2>
@@ -166,8 +166,8 @@ const BuyerConsultation = () => {
       </section>
 
       {/* Meet Khairi */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+<section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="reveal order-2 lg:order-1">
             <div className="section-label mb-4">Your Richmond Guide</div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-[var(--charcoal)] mb-6">
@@ -199,7 +199,7 @@ const BuyerConsultation = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 bg-[var(--charcoal)] text-white text-center">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--charcoal)] text-white text-center">
         <div className="max-w-3xl mx-auto reveal">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">Ready to Find Your Home?</h2>
           <p className="text-xl text-gray-300 mb-12">Schedule a personalized consultation with Khairi to discuss your goals and start your Richmond home search.</p>

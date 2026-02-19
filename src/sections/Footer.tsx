@@ -114,7 +114,7 @@ const Footer = () => {
       </div>
 
       <div ref={contentRef} className="relative z-10 pt-20 pb-8">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
             {/* Brand Column */}
@@ -249,7 +249,7 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-[var(--teal)] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-[var(--teal-dark)] hover:scale-110 hover:shadow-xl z-50"
+        className="fixed safe-area-fixed-bottom-right w-12 h-12 bg-[var(--teal)] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-[var(--teal-dark)] hover:scale-110 hover:shadow-xl z-50"
         aria-label="Back to top"
       >
         <ArrowUp className="w-5 h-5" />

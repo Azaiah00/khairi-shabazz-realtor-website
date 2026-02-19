@@ -23,9 +23,9 @@ const Layout = ({ children }: LayoutProps) => {
   }, [pathname]);
 
   return (
-    <div className="relative min-h-screen bg-[var(--off-white)]">
+    <div className="relative min-h-screen min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden bg-[var(--off-white)]">
       <Navigation />
-      <main>
+      <main className="w-full max-w-[100vw] overflow-x-hidden">
         {children}
       </main>
       <Footer />

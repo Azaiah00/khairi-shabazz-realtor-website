@@ -163,17 +163,17 @@ const Hero = () => {
         style={{ mixBlendMode: 'multiply' }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 min-h-screen flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
-          {/* Content */}
-          <div className="order-2 lg:order-1 space-y-8">
-            <div ref={headlineRef} className="space-y-2" style={{ perspective: '1000px' }}>
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-[var(--charcoal)] leading-tight">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 sm:pb-20 min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-center w-full min-w-0">
+          {/* Content - min-w-0 allows flex child to shrink and prevents overflow */}
+          <div className="order-2 lg:order-1 space-y-6 sm:space-y-8 min-w-0">
+            <div ref={headlineRef} className="space-y-2 min-w-0" style={{ perspective: '1000px' }}>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--charcoal)] leading-tight">
                 <span className="word inline-block">Your</span>{' '}
                 <span className="word inline-block">Dream</span>{' '}
                 <span className="word inline-block text-[var(--teal)]">Home</span>
               </h1>
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-[var(--charcoal)] leading-tight">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--charcoal)] leading-tight">
                 <span className="word inline-block">Awaits</span>{' '}
                 <span className="word inline-block">in</span>{' '}
                 <span className="word inline-block">Richmond</span>
@@ -227,10 +227,10 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="order-1 lg:order-2 relative">
+          <div className="order-1 lg:order-2 relative min-w-0">
             <div
               ref={imageRef}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              className="relative rounded-2xl overflow-hidden shadow-2xl w-full"
               style={{ perspective: '1000px' }}
             >
               <img

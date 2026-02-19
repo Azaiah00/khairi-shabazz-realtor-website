@@ -43,7 +43,7 @@ const SellerConsultation = () => {
   return (
     <div ref={containerRef} className="bg-[var(--off-white)]">
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6 bg-[var(--charcoal)] text-white overflow-hidden relative">
+      <section className="pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-[var(--charcoal)] text-white overflow-hidden relative">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full gradient-teal" />
         </div>
@@ -70,7 +70,7 @@ const SellerConsultation = () => {
       </section>
 
       {/* Virtual Staging */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
           <div className="reveal">
             <div className="section-label mb-4">Marketing Mastery</div>
@@ -101,7 +101,7 @@ const SellerConsultation = () => {
       </section>
 
       {/* Timeline */}
-      <section id="timeline" className="py-24 px-6 bg-white">
+      <section id="timeline" className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 reveal">
             <div className="section-label mb-4">The Process</div>
@@ -116,7 +116,7 @@ const SellerConsultation = () => {
       </section>
 
       {/* Calculators */}
-      <section id="calculator" className="py-24 px-6 bg-[var(--off-white)]">
+      <section id="calculator" className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--off-white)]">
         <div className="max-w-7xl mx-auto">
           <div className="reveal">
             <NetSheetCalculator />
@@ -125,8 +125,8 @@ const SellerConsultation = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
+<section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+          <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 reveal">
             <h2 className="text-4xl font-display font-bold text-[var(--charcoal)] mb-4">Seller FAQ</h2>
             <p className="text-[var(--dark-gray)]">Common questions about selling in Richmond.</p>
@@ -147,8 +147,8 @@ const SellerConsultation = () => {
       </section>
 
       {/* Meet Khairi */}
-      <section className="py-24 px-6 bg-[var(--teal-pale)]">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--teal-pale)]">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="reveal order-2 lg:order-1">
             <div className="section-label mb-4">Your Richmond Expert</div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-[var(--charcoal)] mb-6">
@@ -180,7 +180,7 @@ const SellerConsultation = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 bg-[var(--charcoal)] text-white text-center">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[var(--charcoal)] text-white text-center">
         <div className="max-w-3xl mx-auto reveal">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">Ready to Maximize Your Equity?</h2>
           <p className="text-xl text-gray-300 mb-12">Schedule a personalized consultation with Khairi to discuss your home's unique value and our winning marketing plan.</p>
