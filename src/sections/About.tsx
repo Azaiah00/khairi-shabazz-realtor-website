@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Award, MapPin, Shield, ArrowRight, CheckCircle } from 'lucide-react';
@@ -109,17 +109,25 @@ const About = () => {
         })
       );
 
-      // Image clip reveal
+      // Image reveal (simple fade on touch, clip reveal on desktop)
       scrollTriggers.push(
         ScrollTrigger.create({
           trigger: imageRef.current,
           start: 'top 80%',
           onEnter: () => {
-            gsap.fromTo(
-              imageRef.current,
-              { clipPath: 'inset(0 100% 0 0)' },
-              { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power3.inOut', delay: 0.3 }
-            );
+            if (isTouchDevice()) {
+              gsap.fromTo(
+                imageRef.current,
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.2 }
+              );
+            } else {
+              gsap.set(imageRef.current, { opacity: 1, clipPath: 'inset(0 100% 0 0)' });
+              gsap.to(
+                imageRef.current,
+                { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power3.inOut', delay: 0.3 }
+              );
+            }
           },
           once: true,
         })
@@ -203,7 +211,7 @@ const About = () => {
             <div
               ref={imageRef}
               className="relative rounded-2xl overflow-hidden shadow-xl"
-              style={{ clipPath: 'inset(0 100% 0 0)' }}
+              style={{ opacity: 0 }}
             >
               <img
                 src="/khairi-shabazz-profile-image.jpeg"
@@ -247,7 +255,6 @@ const About = () => {
             <h2
               ref={headlineRef}
               className="font-display text-4xl lg:text-5xl text-[var(--charcoal)] leading-tight"
-              style={{ perspective: '1000px' }}
             >
               <span className="word inline-block">Dedicated</span>{' '}
               <span className="word inline-block">to</span>{' '}

@@ -253,7 +253,7 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1200px' }}>
+        <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Connecting SVG line (visible on lg+) */}
           <svg
             className="hidden lg:block absolute top-1/2 left-0 w-full h-4 -translate-y-1/2 pointer-events-none"

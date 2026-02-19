@@ -36,32 +36,59 @@ const Hero = () => {
         0.4
       );
 
-      // Hero image clip reveal
-      entranceTl.fromTo(
-        imageRef.current,
-        { clipPath: 'inset(100% 0 0 0)', scale: 1.1 },
-        { clipPath: 'inset(0% 0 0 0)', scale: 1, duration: 1.4, ease: 'power3.inOut' },
-        0.3
-      );
-
-      // Headline word reveal
-      if (headlineRef.current) {
-        const words = headlineRef.current.querySelectorAll('.word');
+      // Hero image reveal (simple fade on touch, clip reveal on desktop)
+      if (isTouchDevice()) {
         entranceTl.fromTo(
-          words,
-          { y: 60, opacity: 0, rotateX: 45 },
-          { y: 0, opacity: 1, rotateX: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' },
-          0.6
+          imageRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+          0.3
+        );
+      } else {
+        entranceTl.fromTo(
+          imageRef.current,
+          { clipPath: 'inset(100% 0 0 0)', scale: 1.1 },
+          { clipPath: 'inset(0% 0 0 0)', scale: 1, duration: 1.4, ease: 'power3.inOut' },
+          0.3
         );
       }
 
-      // Subheadline
-      entranceTl.fromTo(
-        subheadlineRef.current,
-        { opacity: 0, filter: 'blur(10px)' },
-        { opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' },
-        1.2
-      );
+      // Headline word reveal (simpler on touch — no rotateX or blur which are GPU-heavy)
+      if (headlineRef.current) {
+        const words = headlineRef.current.querySelectorAll('.word');
+        if (isTouchDevice()) {
+          entranceTl.fromTo(
+            words,
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
+            0.4
+          );
+        } else {
+          entranceTl.fromTo(
+            words,
+            { y: 60, opacity: 0, rotateX: 45 },
+            { y: 0, opacity: 1, rotateX: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' },
+            0.6
+          );
+        }
+      }
+
+      // Subheadline (skip blur filter on touch)
+      if (isTouchDevice()) {
+        entranceTl.fromTo(
+          subheadlineRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
+          0.8
+        );
+      } else {
+        entranceTl.fromTo(
+          subheadlineRef.current,
+          { opacity: 0, filter: 'blur(10px)' },
+          { opacity: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' },
+          1.2
+        );
+      }
 
       // CTA buttons
       if (ctaRef.current) {
@@ -167,7 +194,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-center w-full min-w-0">
           {/* Content - min-w-0 allows flex child to shrink and prevents overflow */}
           <div className="order-2 lg:order-1 space-y-6 sm:space-y-8 min-w-0">
-            <div ref={headlineRef} className="space-y-2 min-w-0" style={{ perspective: '1000px' }}>
+            <div ref={headlineRef} className="space-y-2 min-w-0">
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--charcoal)] leading-tight">
                 <span className="word inline-block">Your</span>{' '}
                 <span className="word inline-block">Dream</span>{' '}
@@ -231,7 +258,6 @@ const Hero = () => {
             <div
               ref={imageRef}
               className="relative rounded-2xl overflow-hidden shadow-2xl w-full"
-              style={{ perspective: '1000px' }}
             >
               <img
                 src="/hero-house.jpg"
